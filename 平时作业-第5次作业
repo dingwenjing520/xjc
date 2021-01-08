@@ -1,0 +1,316 @@
+第九章 练习
+3.
+package xjc;
+
+public class xjc3 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		java.util.Date date=new java.util.Date();
+		date.setTime(10000);
+		System.out.println(date.toString());
+		
+		date.setTime(100000);
+		System.out.println(date.toString());
+		
+		date.setTime(1000000);
+		System.out.println(date.toString());
+		
+		date.setTime(10000000);
+		System.out.println(date.toString());
+		
+		date.setTime(100000000);
+		System.out.println(date.toString());
+		
+		date.setTime(1000000000);
+		System.out.println(date.toString());
+		
+		date.setTime(10000000000L);
+		System.out.println(date.toString());
+		
+		date.setTime(100000000000L);
+
+	}
+
+}
+
+4.
+package xjc;
+
+import java.util.Random;
+public class xjc4 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Random random=new Random(1000);
+		for(int i=0;i<50;i++)
+		{
+				System.out.println(random.nextInt(100));
+		}
+	}
+
+}
+
+
+5.
+package xjc;
+
+import java.util.GregorianCalendar;
+public class xjc5 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		GregorianCalendar object=new GregorianCalendar(2020,11,3);
+		System.out.println(object.get(GregorianCalendar.YEAR)+"年"
+				+object.get(GregorianCalendar.MONTH)+"月"
+				+object.get(GregorianCalendar.DATE)+"日");
+		object.setTimeInMillis(1234567898765L);
+		System.out.println(object.get(GregorianCalendar.YEAR)+"年"
+				+object.get(GregorianCalendar.MONTH)+"月"
+				+object.get(GregorianCalendar.DATE)+"日");
+	}
+
+}
+
+6.
+
+package xjc;
+
+
+public class xjc6 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		StopWatch object =new StopWatch();
+		int[] n=new int[100000];
+		for(int i=0;i<100000;i++)
+		{n[i]=(int)(Math.random()*100);}
+		selectionSort(n);
+		object.stop(object.getElapsedTime());
+		long time=object.getEndTime()-object.getStartTime();
+		System.out.print(time);
+	}
+	public static void selectionSort(int[] list)
+	{
+		for(int i=0;i<list.length-1;i++)
+		{
+			int max=list[i];
+			int max_index=i;
+			for(int j=i+1;j<list.length;j++)
+			{
+				if(max<list[j])
+				{
+					max=list[j];
+					max_index=j;
+				}
+			}
+			if(max_index!=i)
+			{
+			    list[max_index]=list[i];
+			    list[i]=max;
+			}
+		}
+	}
+
+}
+
+
+package xjc;
+
+public class StopWatch 
+{
+
+	// TODO Auto-generated method stub
+	private long startTime;
+	private long endTime;
+	public void StopWatch()
+	{
+		java.util.Date date=new java.util.Date();
+		startTime=date.getTime();
+	}
+	public void start(long startTime)
+	{
+		this.startTime=startTime;
+	}
+	public void stop(long endTime)
+	{
+		this.endTime=endTime;
+	}
+	public long getElapsedTime()
+	{
+		java.util.Date time=new java.util.Date();
+		return time.getTime();
+	}
+	public long getStartTime()
+	{
+		return startTime;
+	}
+	public long getEndTime()
+	{
+		return endTime;
+	}
+}
+
+10.
+
+package xjc;
+import java.util.Scanner;
+public class xjc10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		
+		System.out.print("请输入a、b和c的值：");
+		double a=input.nextDouble();
+		double b=input.nextDouble();
+		double c=input.nextDouble();
+		input.close();
+		
+		QuadraticEquation object=new QuadraticEquation(a,b,c);
+		
+		
+		System.out.println("a的值："+object.getA());
+		System.out.println("b的值："+object.getB());
+		System.out.println("c的值："+object.getC());
+		
+		if(object.getDiscriminant()>0)
+			System.out.println("判别式>0,方程有两个根,分别为  r1:"+object.getRoot1()+" r2:"+object.getRoot2());
+		else if(object.getDiscriminant()==0)
+			System.out.println("判别式=0,方程只有一个根 r:"+object.getRoot1());
+		else
+			System.out.println("The equation has no roots.");
+
+	}
+
+}
+
+package xjc;
+
+public class QuadraticEquation 
+{
+	private double a;
+	private double b;
+	private double c;
+	
+	QuadraticEquation(double a, double b, double c) 
+	{
+	this.a=a;
+	this.b=b;
+	this.c=c;
+	}
+	public double getA() 
+	{
+		return a;
+	}
+	
+	public double getB()
+	{
+		return b;
+	}
+	
+	public double getC() 
+	{
+		return c;
+	}
+	
+	public double getDiscriminant() 
+	{
+	double p=Math.pow(b, 2)-4*a*c;
+	return p;
+	}
+	
+	public double getRoot1() 
+	{
+	double r1=(-b+Math.sqrt(Math.pow(b, 2)-4*a*c)) / (2*a); 
+	return r1;
+	}
+	
+	public double getRoot2() 
+	{
+	double r2=(-b-Math.sqrt(Math.pow(b, 2)-4*a*c)) / (2*a); 
+	return r2;
+	}
+
+}
+
+11.
+
+package xjc;
+import java.util.Scanner;
+
+public class xjc11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.print("please input a,b,c,d,e,f: ");
+		double a=input.nextDouble();
+		double b=input.nextDouble();
+		double c=input.nextDouble();
+		double d=input.nextDouble();
+		double e=input.nextDouble();
+		double f=input.nextDouble();
+		LinearEquation object=new LinearEquation(a,b,c,d,e,f);
+		if(object.isSolved())
+			System.out.println("X: "+object.getX()+"\nY: "+object.getY());
+		else
+			System.out.println("The equation has no solution.");
+	}
+
+}
+
+package xjc;
+
+public class LinearEquation {
+	private double a;
+	private double b;
+	private double c;
+	private double d;
+	private double e;
+	private double f;
+	LinearEquation(double a,double b,double c,double d,double e,double f){
+		this.a=a;this.b=b;this.c=c;this.d=d;this.e=e;this.f=f;
+	}
+	public double geta() {
+		return this.a;
+	}
+	public double getb() {
+		return this.b;
+	}
+	public double getc() {
+		return this.c;
+	}
+	public double getd() {
+		return this.d;
+	}
+	public double gete() {
+		return this.e;
+	}
+	public double getf() {
+		return this.f;
+	}
+	public boolean isSolved() {
+		if((this.a*this.d-this.b*this.c)!=0)
+			return true;
+		else
+			return false;
+	}
+	public double getX() {
+		double x=(this.e*this.d-this.b*this.f)/(this.a*this.d-this.b*this.c);
+		return x;
+	}
+	public double getY() {
+		double y=(this.a*this.f-this.e*this.c)/(this.a*this.d-this.b*this.c);
+		return y;
+	}
+}
+
