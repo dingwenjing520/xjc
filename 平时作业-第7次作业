@@ -1,0 +1,140 @@
+ 
+第11章 课后题:
+
+9.
+package xjc;
+import java.util.Scanner;
+import java.util.ArrayList;
+public class xjc9 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter the array size n:");
+		int n=input.nextInt();
+		ArrayList<Integer>list1=new ArrayList<>();
+		ArrayList<Integer>list2=new ArrayList<>();
+		int [][]array=new int[n][n];
+		System.out.println("The random array is: ");
+		for(int i=0;i<array.length;i++)
+		{
+			for(int j=0;j<array[i].length;j++)
+			{
+				array[i][j]=(int)(Math.random()*2);
+				System.out.print(array[i][j]);
+		    }
+			System.out.println();
+	    }
+	
+		int row=0;
+		int column=0;
+		int row_max=0;
+		int column_max=0;
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(array[i][j]==1)row++;
+			}
+			if(row>=row_max)row_max=row;
+			row=0;
+		}
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(array[j][i]==1)column++;
+			}
+			if(column>=column_max)column_max=column;
+			column=0;
+		}
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(array[i][j]==1)row++;
+				if(array[j][i]==1)column++;
+			}
+			if(row==row_max)
+				list1.add(i);
+			if (column==column_max)
+				list2.add(i);
+			row=0;
+			column=0;
+		}
+	System.out.print("The largest row index: ");
+	for(int i=0;i<list1.size();i++)
+		System.out.print(list1.get(i)+" ");
+	
+	System.out.println();
+	
+	System.out.print("The largest column index: ");
+	for(int i=0;i<list2.size();i++)
+		System.out.print(list2.get(i)+" ");
+	}
+}
+
+13.
+package xjc;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+public class xjc13 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		ArrayList<Integer>list=new ArrayList<>();
+		System.out.print("Enter ten integers: ");
+		for(int i=0;i<10;i++)
+			list.add(input.nextInt());
+		removeDuplicate(list);
+	}
+	public static void removeDuplicate(ArrayList<Integer>list)
+	{
+		ArrayList<Integer>newlist=new ArrayList<>();
+		for(int i=0;i<list.size();i++)
+		{
+			if(!newlist.contains(list.get(i)))
+			newlist.add(list.get(i));
+		}
+		System.out.print("The distinct integers are");
+		for(int i=0;i<newlist.size();i++)
+			System.out.print(" "+newlist.get(i));
+	}
+}
+
+15.
+
+package xjc;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class xjc15 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		ArrayList<Double>listx=new ArrayList<>();
+		ArrayList<Double>listy=new ArrayList<>();
+		System.out.print("Enter the number of the points: ");
+		int point_num=input.nextInt();
+		System.out.println("Enter the coordinate of the points:");
+		for(int i=0;i<point_num;i++)
+		{
+			listx.add(input.nextDouble());
+			listy.add(input.nextDouble());
+		}
+		System.out.println(listx.toString()+listy.toString());
+		double sum=0;
+		for(int i=0;i<point_num-1;i++)
+			sum=sum+(listx.get(i)*listy.get(i+1)-listx.get(i+1)*listy.get(i));
+		
+		double square=(Math.abs(sum+(listx.get(point_num-1))*listy.get(0)-(listx.get(0)*listy.get(point_num-1))))/2;
+		System.out.print("The total area is "+square);
+	}
+}
+
+
