@@ -1,0 +1,40 @@
+课后练习：
+
+1.
+package xjc;
+import java.util.Scanner;
+public class xjc123 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter the subtotal and a gratuity rate: ");
+		double a=input.nextDouble();
+		double b=input.nextDouble();
+		double x=a*b/100;
+		double y=a+x;
+		System.out.print("The gratuity is $"+x+" and total is $"+y);
+		
+	}
+
+}
+package xjc;
+import java.util.Scanner;
+public class  xjc123 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input= new Scanner(System.in);
+		System.out.print("Enter the monthly saving amount:");
+		double a=input.nextDouble();
+		double x=a;
+		for(int i=1;i<=5;i=i+1)
+		{
+			x=(a+x)*(1+0.00417);
+		}
+		System.out.print("After the sixth month, the account value is $");
+		System.out.print(String.format("%.2f", x));
+	}
+
+}
+
