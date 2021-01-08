@@ -1,0 +1,250 @@
+数组课后练习
+1.
+package xjc;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class xjc1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter the number of students: ");
+		int number=input.nextInt();
+		int best=0;
+		String str;
+		System.out.print("Enter "+number+" scores: ");
+		ArrayList<Integer>list=new ArrayList<>();
+		for(int i=0;i<number;i++) {
+			int grade =input.nextInt();
+			list.add(grade);
+			if(grade>best)
+				best=list.get(i);
+		}
+		for(int i=0;i<number;i++) {
+			int grade=list.get(i);
+			if(grade>=best-10)
+				str="A";
+			else if(grade>=best-20)
+				str="B";
+			else if(grade>=best-30)
+				str="C";
+			else
+				str="D";
+			System.out.println("Student "+i+" score is "+list.get(i)+"and grade is "+str);
+		}
+	}
+
+}
+6.
+package xjc;
+
+public class xjc6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[]a=new int[50];
+		int num=1;
+		a[0]=2;
+		for(int i=3;num<50;i++){
+			int flag=1;
+			for(int j=0;a[j]<=Math.sqrt(i)&&j<num;j++) {
+				if(i%a[j]==0) {
+					flag=0;
+					break;
+				}
+			}
+			if(flag==1) {
+				a[num]=i;
+				num++;
+			}
+		}
+		System.out.println("前50个素数为：");
+		for(int i=0;i<50;i++)
+			System.out.println("            "+a[i]);
+	}
+
+}
+
+7.
+package xjc;
+import java.util.ArrayList;
+import java.util.Scanner;
+public class xjc7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[]a=new int[100];
+		for(int i=0;i<100;i++) {
+			int num=(int)(Math.random()*10);
+			a[num]++;
+		}
+		for(int i=0;i<10;i++)
+			System.out.println(i+"出现的次数为： "+a[i]);
+	}
+
+}
+11.
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter ten numbers: ");
+		double []a=new double[10];
+		for(int i=0;i<10;i++)
+			a[i]=input.nextDouble();
+		System.out.println("The mean is "+mean(a));
+		System.out.println("The standard deviation is "+deviation(a));
+	}
+	public static double deviation(double[] x) {
+		double sum=0;
+		double mean=mean(x);
+		for(double i:x)
+			sum+=(i-mean)*(i-mean);
+		double d=Math.sqrt(sum/(x.length-1));
+		return d;
+	}
+	public static double mean(double[] x) {
+		double sum=0;
+		for(double i:x) 
+			sum+=i;
+		return sum/x.length;
+	}
+}
+12.
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc12 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		int []a=new int[10];
+		System.out.print("Enter ten numbers: ");
+		for(int i=0;i<10;i++)
+			a[i]=input.nextInt();
+		reverse(a);
+	}
+	public static void reverse(int []a) {
+		int []b=new int[10];
+		for(int i=0;i<10;i++) {
+			b[i]=a[9-i];
+		}
+		System.out.print("reverse: ");
+		for(int i:b)
+			System.out.print(i+" ");
+	}
+}
+
+13.
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc13 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		int x=input.nextInt();
+		System.out.print(getRandom(x));
+	}
+	public static int getRandom(int numbers) {
+		return (int)(Math.random()*54+1);
+	}
+}
+
+
+23.
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc23 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		int []a=new int[100];
+		for(int i=0;i<100;i++) {
+			for(int j=i;j<100;j+=i+1) {
+				if(a[j]==1)a[j]=0;
+				else a[j]=1;
+			}
+		}
+		System.out.print("开着的柜子：");
+		for(int i=0;i<100;i++) {
+			if(a[i]==1)
+				System.out.print(i+" ");
+		}
+			
+	}
+
+}
+
+28.
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc28 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		int []a=new int[10];
+		System.out.print("Enter ten number: ");
+		for(int i=0;i<10;i++)
+			a[i]=input.nextInt();
+		System.out.println("所有的2个数组合: ");
+		for(int i=0;i<10;i++) 
+			for(int j=i+1;j<10;j++) 
+				System.out.println("("+a[i]+","+a[j]+")");
+	}
+
+}
+
+30.
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc30 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter the number of values: ");
+		int n=input.nextInt();
+		int []a=new int[n];
+		int count=1;
+		int max_count=0;
+		System.out.print("Enter the values: ");
+		for(int i=0;i<n;i++) 
+			a[i]=input.nextInt();
+		int t=a[0];
+		for(int i=1;i<n;i++) {
+			if(a[i]==t)
+				count++;
+			else{
+				count=1;
+				t=a[i];
+			}
+			if(count>max_count)max_count=count;
+		}
+		if(max_count>=4)
+			System.out.print("The list has consecutive fours");
+		else
+			System.out.print("The list has no consecutive fours");
+	}
+}
+
+
