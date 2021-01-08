@@ -1,0 +1,177 @@
+ 
+
+异常
+
+6.
+package xjc;
+import java.util.*;
+public class xjc6 {
+	public static void main(String[] args) 
+	{
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter a hex number:");
+		String hex=input.nextLine();
+		System.out.println("The decimal value for hex number "+hex
+				+" is "+hextodec(hex.toUpperCase()));
+	}
+	public static int hextodec(String hex)
+	{
+		int decimalvalue=0;
+		for(int i=0;i<hex.length();i++)
+		{
+			char hexchar=hex.charAt(i);
+			decimalvalue=decimalvalue*16+hexchartodec(hexchar);
+		}
+		return decimalvalue;
+	}
+	public static int hexchartodec(char ch)throws java.lang.NumberFormatException 
+	{
+		if (ch >= 'A' && ch <= 'F')
+			return 10 + ch - 'A';
+		else if (ch >= '0' && ch <= '9') 
+			return ch - '0';
+		else throw new java.lang.NumberFormatException("您输入的不是十六进制数");
+	}
+}
+
+7.
+
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc7 {
+
+	public static void main(String[] args) 
+	{
+			Scanner input=new Scanner(System.in);
+			System.out.print("Enter a hex number:");
+			String bin=input.nextLine();
+			System.out.println("The decimal value for hex number "+bin
+					+" is "+bin2dec(bin.toUpperCase()));
+		}
+		public static int bin2dec(String bin)
+		{
+			int binimalvalue=0;
+			for(int i=0;i<bin.length();i++)
+			{
+				char binchar=bin.charAt(i);
+				binimalvalue=binimalvalue*2+binchartodec(binchar);
+			}
+			return binimalvalue;
+		}
+		public static int binchartodec(char ch)throws java.lang.NumberFormatException 
+		{
+			if(ch>='0'&&ch<='1')
+				return ch-'0';
+			else throw new java.lang.NumberFormatException("您输入的不是十进制");
+		}
+}
+
+8.
+
+package xjc;
+import java.util.*;
+public class xjc8 {
+	public static void main(String[] args) throws HexFormatException
+	{
+		Scanner input=new Scanner(System.in);
+		System.out.print("Enter a hex number:");
+		String hex=input.nextLine();
+		System.out.println("The decimal value for hex number "+hex
+				+" is "+hextodec(hex.toUpperCase()));
+	}
+	public static int hextodec(String hex)throws HexFormatException
+	{
+		int decimalvalue=0;
+		for(int i=0;i<hex.length();i++)
+		{
+			char hexchar=hex.charAt(i);
+			decimalvalue=decimalvalue*16+hexchartodec(hexchar);
+		}
+		return decimalvalue;
+	}
+	public static int hexchartodec(char ch)throws HexFormatException
+	{
+		if (ch >= 'A' && ch <= 'F')
+			return 10 + ch - 'A';
+		else if (ch >= '0' && ch <= '9') 
+			return ch - '0';
+		else throw new HexFormatException(ch);
+	}
+}
+class HexFormatException extends Exception
+{
+	private char ch;
+	HexFormatException(char ch)
+	{
+		super("您输入的输入不是十六进制"+ch);
+	}
+	public char getch()
+	{
+		return ch;
+	}
+}
+
+9.
+
+package xjc;
+
+import java.util.Scanner;
+
+public class xjc9 {
+	public static void main(String[] args) throws HexFormatException2
+	{
+			Scanner input=new Scanner(System.in);
+			System.out.print("Enter a hex number:");
+			String bin=input.nextLine();
+			System.out.println("The decimal value for hex number "+bin
+					+" is "+bin2dec(bin.toUpperCase()));
+		}
+		public static int bin2dec(String bin)throws HexFormatException2
+		{
+			int binimalvalue=0;
+			for(int i=0;i<bin.length();i++)
+			{
+				char binchar=bin.charAt(i);
+				binimalvalue=binimalvalue*2+binchartodec(binchar);
+			}
+			return binimalvalue;
+		}
+		public static int binchartodec(char ch)throws HexFormatException2
+		{
+			if(ch>='0'&&ch<='1')
+				return ch-'0';
+			else throw new HexFormatException2(ch);
+		}
+}
+class HexFormatException2 extends Exception
+{
+	private char ch;
+	HexFormatException2(char ch)
+	{
+		super("您输入的输入不是二进制"+ch);
+	}
+	public char getch()
+	{
+		return ch;
+	}
+}
+
+10.
+package xjc;
+
+public class xjc10 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+			int[] arr = new int[Integer.MAX_VALUE];
+		} catch(OutOfMemoryError err) {
+			System.out.println(err.getMessage());
+		}
+	}
+
+}
+
+
